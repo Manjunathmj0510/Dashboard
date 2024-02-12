@@ -116,7 +116,7 @@ const Dashboard = ({ uid }) => {
         <Card style={{ width: '18rem', margin: '1%',backgroundColor:'#555' }}>
           <Card.body>
             <Card.text>
-              {count}
+              {count}<br/>
               Total Posts
             </Card.text>
           </Card.body>
@@ -124,7 +124,7 @@ const Dashboard = ({ uid }) => {
         <Card style={{ width: '18rem', margin: '1%',backgroundColor:'#555'}}>
           <Card.body>
             <Card.text>
-              {postData?.length}
+              {postData?.length}<br/>
               current posts
             </Card.text>
           </Card.body>
