@@ -12,7 +12,8 @@ import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 const UserAuthComponent = () => {
   const navigate = useNavigate();
-  const [register, setRegister] = useState(false);
+  const[load,ssetLoad] = useState(false)
+  const [register, setRegister]=useState(false);
   const [name, setName] = useState('');
   const [group, setGroup] = useState('');
   const [userdata, setUserdata] = useState([]);
@@ -39,8 +40,10 @@ const UserAuthComponent = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoad(true)
     await createUserWithEmailAndPassword(auth, name, password)
       .then(async (userCredential) => {
+        setLoad(false)
         const users = userCredential.user;
         console.log(users);
         try {
@@ -61,20 +64,24 @@ const UserAuthComponent = () => {
         setRegister(!register);
       })
       .catch((error) => {
+        setLoad(false)
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode, errorMessage);
       });
   };
   const onLogin = (e) => {
+    setLoad(true)
     e.preventDefault();
     signInWithEmailAndPassword(auth, name, password)
       .then((userCredential) => {
+        setLoad(false)
         const users = userCredential.user;
         reset();
-        navigate('/DashBoard');
+        navigate('/dashboard');
       })
       .catch((error) => {
+        setLoad(false)
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode, errorMessage);
@@ -83,7 +90,7 @@ const UserAuthComponent = () => {
 
   return (
     <div>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem',margin:'auto'}}>
         <Card.Body>
           <Card.Title>{register ? 'Sign Up' : 'Sign In'}</Card.Title>
           <Card.Text>
@@ -146,7 +153,7 @@ const UserAuthComponent = () => {
                     />
                   </Form.Group>
                   <Button variant="primary" type="submit">
-                    Submit
+                 {load ? 'loading':'Submit'}
                   </Button>
                 </Form>
               </>
@@ -174,7 +181,7 @@ const UserAuthComponent = () => {
                     />
                   </Form.Group>
                   <Button variant="primary" type="submit">
-                    Submit
+                   {load ? 'loading':'Submit'}                
                   </Button>
                 </Form>
               </>

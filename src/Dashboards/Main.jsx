@@ -99,7 +99,7 @@ const Dashboard = ({ uid }) => {
   };
 
   return (
-    <div>
+    <div style={{margin:'5%'}}>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">Dashboard</Navbar.Brand>
@@ -113,21 +113,21 @@ const Dashboard = ({ uid }) => {
       </Navbar>
       <Container>
         <br />
-        <Card style={{ width: '18rem', margin: '1%',backgroundColor:'#555' }}>
-          <Card.body>
-            <Card.text>
+        <Card style={{ width: '18rem', margin: '1%',backgroundColor:'#555' ,color:'white'}}>
+          <Card.Body>
+            <Card.Text>
               {count}<br/>
               Total Posts
-            </Card.text>
-          </Card.body>
+            </Card.Text>
+          </Card.Body>
         </Card>
-        <Card style={{ width: '18rem', margin: '1%',backgroundColor:'#555'}}>
-          <Card.body>
-            <Card.text>
+        <Card style={{ width: '18rem', margin: '1%',backgroundColor:'#555',color:'white'}}>
+          <Card.Body>
+            <Card.Text>
               {postData?.length}<br/>
               current posts
-            </Card.text>
-          </Card.body>
+            </Card.Text>
+          </Card.Body>
         </Card>
 
         {user[0]?.user_type === 'Service Provider' ? (
