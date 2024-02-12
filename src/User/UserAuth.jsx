@@ -53,7 +53,7 @@ const UserAuthComponent = () => {
               is_admin: userdata.length ? false : true,
             },
           });
-          
+          console.log(docRef)
         } catch (e) {
           alert('Error adding document: ', e);
         }

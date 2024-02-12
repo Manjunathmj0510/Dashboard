@@ -44,6 +44,7 @@ const Dashboard = ({ uid }) => {
           usertype: user[0]?.user_type,
         },
       });
+      console.log(docRef)
     } catch (e) {
       alert(e);
     }
